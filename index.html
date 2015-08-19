@@ -1,89 +1,68 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sem título</title>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Example</title>
 
-<script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
- 
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        window.localStorage.setItem("key", "value");
+        var keyname = window.localStorage.key(i);
+        // keyname is now equal to "key"
+        var value = window.localStorage.getItem("key");
+        // value is now equal to "value"
+//#        window.localStorage.removeItem("key");
+//#        window.localStorage.setItem("key2", "value2");
+//#        window.localStorage.clear();
+        // localStorage is now empty
+    }
+
+
+    </script>
+  </head>
+  <body>
+    <h1>Example</h1>
+    <p>localStorage</p>
     <script>
- 
-        document.addEventListener("deviceready", onDeviceReady, false);
-        var db;
-        function onDeviceReady() {
-            db = window.openDatabase("Teste", "1.0", "Phonegap DB", 20000);
-        }
-		
-		function inseriNome() {
-            db.transaction(geraNomeDB, errorCB, successCB);
-            }
-function geraNomeDB(tx) {
-            var nomeInserido = new String(document.getElementById('idInsiraNome').value);
-            tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (data)');
-            tx.executeSql('INSERT INTO DEMO (data) VALUES ("'+nomeInserido+'")');
-        }
-		
-		        function deleteNome() {
-            db.transaction(deletaNome, errorCB, successCB);
-        }
-        function deletaNome(tx) {
-            var nomeDeletado = new String(document.getElementById('idDeleteNome').value);
-            tx.executeSql('DELETE FROM DEMO WHERE data="'+nomeDeletado+'";');
-        }
-		
-		function altereNome() {
-            db.transaction(alteraNome, errorCB, successCB);
-        }
-        function alteraNome(tx) {
-            var nomeAlterado = new String(document.getElementById('idAlteraNome').value);
-            var nomeAntigo = new String(document.getElementById('idAntigoNome').value);
-            tx.executeSql('UPDATE DEMO SET data = "'+nomeAlterado+'" WHERE data = "'+nomeAntigo+'";');
-        }
-		
-		function buscaNomes() {
-            db.transaction(queryDB, errorCB);
-        }
-        function queryDB(tx) {
-            tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
-        }
- 
-        function querySuccess(tx, results) {
-            var len = results.rows.length;
-            console.log("DEMO table: " + len + " rows found.");
-            for (var i=0; i<len; i++){
-                console.log("Row = " + i + " Data =  " + results.rows.item(i).data);
-                alert("Row = " + i + " Nome =  " + results.rows.item(i).data);
-            }
-        }
-        function errorCB(err) {
-            console.log("Error processing SQL: "+err.code);
-        }
-        function successCB() {
-            alert("Executado com sucesso!");
-        }
-		</script>
 
-</head>
-
-<body>
-    <h1>CRUD no Phonegap</h1>
-    <form>
-        <p>Insira um nome: <input type="text" name="InsiraNome" id="idInsiraNome"></p>
-        <input type="submit" value="Insira" onclick="inseriNome()">
-    </form>
-    <form>
-        <p>Delete um nome: <input type="text" name="DeleteNome" id="idDeleteNome"></p>
-        <input type="submit" value="Deletar" onclick="deleteNome()">
-    </form>
-    </br>
-    <form>
-        <input type="submit" value="Buscar nomes" onclick="buscaNomes()">
-     </form>
-        </br>
-    <form>
-        <p>Qual o NOVO nome: <input type="text" name="AlteraNome" id="idAlteraNome"></p>
-        <p>Qual o ANTIGO nome: <input type="text" name="AntigoNome" id="idAntigoNome"></p>
-        <input type="submit" value="Alterar" onclick="altereNome()">
-     </form>
+    </script>
+    
+    
+    <script>
+	    document.write('keyname');
+	document.write("aabc");
+	
+	
+    var valor1 = 10;
+    var valor2 = 3.14;
+    document.write(valor1);
+</script>
+ 
+<script>
+    var nome = "André";
+    var cidade = "Rio Claro";
+    document.write("Meu nome é " + nome + " e sou de " + cidade);
+</script>
   </body>
 </html>
+<!--
+key : Retorna o nome da chave na posição especificada .
+getItem : Retorna o item identificado por ele é chave.
+setItem : Salva e item na chave fornecida .
+removeItem : Remove o item identificado pelo que é fundamental.
+clear: Remove todos os pares de valores-chave .
+
+
+key: Returns the name of the key at the position specified.
+getItem: Returns the item identified by it's key.
+setItem: Saves and item at the key provided.
+removeItem: Removes the item identified by it's key.
+clear: Removes all of the key value pairs.
+-->
