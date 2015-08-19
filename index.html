@@ -13,56 +13,35 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
-        window.localStorage.setItem("key", "value");
-        var keyname = window.localStorage.key(i);
-        // keyname is now equal to "key"
-        var value = window.localStorage.getItem("key");
-        // value is now equal to "value"
-//#        window.localStorage.removeItem("key");
-//#        window.localStorage.setItem("key2", "value2");
-//#        window.localStorage.clear();
-        // localStorage is now empty
+        var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
     }
 
+    // Populate the database 
+    //
+    function populateDB(tx) {
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    }
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
 
     </script>
   </head>
   <body>
     <h1>Example</h1>
-    <p>localStorage</p>
-    <script>
-
-    </script>
-    
-    
-    <script>	    
-		document.write(keyname);
-	document.write("aabc");
-	
-	
-    var valor1 = 10;
-    var valor2 = 3.14;
-    document.write(valor1);
-</script>
- 
-<script>
-    var nome = "André";
-    var cidade = "Rio Claro";
-    document.write("Meu nome é " + nome + " e sou de " + cidade);
-</script>
+    <p>Database</p>
   </body>
 </html>
-<!--
-key : Retorna o nome da chave na posição especificada .
-getItem : Retorna o item identificado por ele é chave.
-setItem : Salva e item na chave fornecida .
-removeItem : Remove o item identificado pelo que é fundamental.
-clear: Remove todos os pares de valores-chave .
-
-
-key: Returns the name of the key at the position specified.
-getItem: Returns the item identified by it's key.
-setItem: Saves and item at the key provided.
-removeItem: Removes the item identified by it's key.
-clear: Removes all of the key value pairs.
--->
