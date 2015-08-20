@@ -1,47 +1,50 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Contact Example</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sem título</title>
+<style type="text/css">
+.ver {
+	font-family: Verdana, Geneva, sans-serif;
+}
+.ms {
+	font-family: "MS Serif", "New York", serif;
+	font-size: 24px;
+}
+.pal {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.ge {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.gr {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.futura {
+	font-family: "Futura XBlk BT";
+	font-size: 24;
+}
+.futura {
+	font-size: 36px;
+}
+</style>
+</head>
 
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
-    <script type="text/javascript" charset="utf-8">
+<body>
 
-    // Wait for PhoneGap to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
+<span class="ver">teste</span>
+  <br /><br /><br /><br />
+  
+  <span class="ge">teste </span><br /><br /><br /><br />
+  
+  <span class="ms"><b>teste</b></span> 
+  <br /><br /><br /><br />
+  
+  <span class="pal">teste</span>
+  <br /><br /><br /><br />
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
-        db.transaction(populateDB, errorCB, successCB);
-    }
+<span class="gr">teste </span><br /><br /><br /><br />
 
-    // Populate the database 
-    //
-    function populateDB(tx) {
-         tx.executeSql('DROP TABLE IF EXISTS DEMO');
-         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    }
-
-    // Transaction error callback
-    //
-    function errorCB(tx, err) {
-        alert("Error processing SQL: "+err);
-    }
-
-    // Transaction success callback
-    //
-    function successCB() {
-        alert("success!");
-    }
-
-    </script>
-  </head>
-  <body>
-    <h1>Example</h1>
-    <p>Database</p>
-  </body>
+<span class="futura">Abastecimento</span>
+</body>
 </html>
